@@ -59,22 +59,24 @@ export async function makeMove(gameId, move) {
             };
         }
 
-        const { piece, from, to } = move;
+        const { from, to } = move;
 
-        if (!piece || !from || !to) {
+        if ( !from || !to) {
             return {
                 success: false,
-                error: "Piece, from and to are required"
+                error: " from and to are required"
             };
         }
+
+        const piece = chessGame.positions[from];
 
         // Verify that the piece is actually at the from position
-        if (chessGame.positions[from] !== piece) {
-            return {
-                success: false,
-                error: "Selected piece does not match board"
-            };
-        }
+        // if (chessGame.positions[from] !== piece) {
+        //     return {
+        //         success: false,
+        //         error: "Selected piece does not match board"
+        //     };
+        // }
 
         // Set selected piece
         chessGame.selectAPiece(piece);
