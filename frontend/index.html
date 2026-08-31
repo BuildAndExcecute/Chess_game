@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess Master - Classic & Modern Chess Platform</title>
+  <meta name="description" content="A classic, premium, production-ready chess web platform featuring AI matches, online multiplayer, move-by-move game replay, and match history.">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chessboard.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="app-container">
+
+    <!-- ====================================================================
+         1. APP HEADER & NAVIGATION
+         ==================================================================== -->
+    <header class="app-header">
+      <div class="brand" data-route="home">
+        <div class="brand-icon">
+          <img src="black-piece/knight.png" alt="ChessMaster knight logo">
+        </div>
+        <div class="brand-name">ChessMaster <span class="brand-badge">PRO</span></div>
+      </div>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <button class="nav-link" type="button" data-route="home">Home</button>
+        <button class="nav-link" type="button" data-route="ai">AI Game</button>
+        <button class="nav-link" type="button" data-route="online">Online</button>
+        <button class="nav-link" type="button" data-route="history">History</button>
+      </nav>
+
+      <div class="header-user">
+        <div class="user-quick-profile" data-route="profile" title="View Profile & Settings">
+          <div class="avatar-circle" id="header-avatar">GA</div>
+          <span class="user-quick-name" id="header-username">GrandmasterAlex</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         2. MAIN VIEWPORT
+         ==================================================================== -->
+    <main class="main-viewport">
+
+      <!-- ------------------------------------------------------------------
+           VIEW: AUTHENTICATION
+           ------------------------------------------------------------------ -->
+      <section id="view-auth" class="app-view active">
+        <div class="auth-shell">
+          <div class="auth-card">
+            <div class="auth-brand-mark">CM</div>
+            <h1>Welcome to ChessMaster</h1>
+            <p class="text-secondary">Login with your existing account or create a new chess profile.</p>
+
+            <div class="auth-tabs" role="tablist" aria-label="Authentication options">
+              <button class="auth-tab active" type="button" data-auth-mode="login">Login</button>
+              <button class="auth-tab" type="button" data-auth-mode="signup">Sign Up</button>
+            </div>
+
+            <div id="auth-message" class="auth-message"></div>
+
+            <div id="auth-login-panel" class="auth-panel active">
+              <form id="login-form">
+                <div class="form-group">
+                  <label class="form-label" for="login-email">Email Address</label>
+                  <input type="email" id="login-email" class="form-control" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="login-password">Password</label>
+                  <input type="password" id="login-password" class="form-control" placeholder="Your password" autocomplete="current-password" required>
+                </div>
+                <button class="btn btn-primary auth-submit" type="submit">Login</button>
+              </form>
+            </div>
+
+            <div id="auth-signup-panel" class="auth-panel">
+              <form id="signup-form">
+                <div class="form-group">
+                  <label class="form-label" for="signup-username">Username</label>
+                  <input type="text" id="signup-username" class="form-control" placeholder="Your chess name" autocomplete="username" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="signup-email">Email Address</label>
+                  <input type="email" id="signup-email" class="form-control" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="signup-password">Password</label>
+                  <input type="password" id="signup-password" class="form-control" placeholder="At least 6 characters" autocomplete="new-password" minlength="6" required>
+                </div>
+                <button class="btn btn-accent auth-submit" type="submit">Create Profile</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: HOME SCREEN
+           ------------------------------------------------------------------ -->
+      <section id="view-home" class="app-view">
+        <div class="home-container">
+          
+          <!-- Mode Hero Cards -->
+          <div class="home-hero-grid">
+            
+            <!-- Card 1: Play with AI -->
+            <div class="mode-card mode-card-ai" data-route="ai">
+              <div>
+                <span class="mode-card-badge">Singleplayer</span>
+                <h2 class="mode-card-title">Play With AI</h2>
+                <p class="mode-card-subtitle">Challenge our tactical chess engine across multiple skill levels. Sharpen your openings and tactical vision.</p>
+              </div>
+              <div class="mode-card-meta">
+                <button class="btn btn-primary" data-route="ai">Play Now</button>
+                <span class="text-muted" style="font-size: 0.85rem;">Instant - Offline ready</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Play Online -->
+            <div class="mode-card mode-card-online" data-route="online">
+              <div>
+                <span class="mode-card-badge">Multiplayer</span>
+                <h2 class="mode-card-title">Play Online</h2>
+                <p class="mode-card-subtitle">Challenge chess players from around the globe in real-time rated matches with competitive matchmaking.</p>
+              </div>
+              <div class="mode-card-meta">
+                <button class="btn btn-accent" data-route="online">Play Online</button>
+                <span class="text-muted" style="font-size: 0.85rem;">Rated - 10 min Blitz</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Match History -->
+            <div class="mode-card mode-card-history" data-route="history">
+              <div>
+                <span class="mode-card-badge">Archive</span>
+                <h2 class="mode-card-title">History</h2>
+                <p class="mode-card-subtitle">Review previous matches, compare results, and replay games move by move to study key decisions.</p>
+              </div>
+              <div class="mode-card-meta">
+                <button class="btn btn-secondary" data-route="history">View History</button>
+                <span class="text-muted" style="font-size: 0.85rem;">Replay ready</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- User Stats Quick Banner -->
+          <div class="stats-summary-card">
+            <div class="stats-summary-user">
+              <div class="stats-avatar-large">GA</div>
+              <div>
+                <h3 id="home-username" style="font-size: 1.25rem;">GrandmasterAlex</h3>
+                <div class="text-secondary" style="font-size: 0.9rem;">Rating: <b class="text-gold" id="home-rating">1540</b> - Blitz Master</div>
+              </div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Games</span>
+                <span class="stat-value" id="home-games-played">148</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Wins</span>
+                <span class="stat-value text-green" id="home-wins">86</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Losses</span>
+                <span class="stat-value text-red" id="home-losses">48</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Draws</span>
+                <span class="stat-value text-secondary" id="home-draws">14</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: PLAY WITH AI SETUP
+           ------------------------------------------------------------------ -->
+      <section id="view-ai" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" data-route="home" type="button">Back</button>
+        </div>
+
+        <div class="ai-setup-container">
+          <div class="ai-setup-heading">
+            <h1>Play With AI</h1>
+            <p class="text-secondary">Configure your match and challenge the computer.</p>
+          </div>
+
+          <div class="ai-setup-grid">
+            <section class="ai-setup-section">
+              <div class="setup-section-header">
+                <h2>Time Control</h2>
+                <span class="setup-value" id="ai-time-display">5 minutes</span>
+              </div>
+              <input type="range" id="ai-time-control" class="setup-range" min="1" max="10" step="1" value="5" aria-label="Game time in minutes">
+              <div class="setup-presets" aria-label="Quick time presets">
+                <button type="button" class="setup-preset" data-ai-time="1">1</button>
+                <button type="button" class="setup-preset" data-ai-time="3">3</button>
+                <button type="button" class="setup-preset active" data-ai-time="5">5</button>
+                <button type="button" class="setup-preset" data-ai-time="10">10</button>
+              </div>
+            </section>
+
+            <section class="ai-setup-section">
+              <div class="setup-section-header">
+                <h2>Choose Your Colour</h2>
+              </div>
+              <div class="setup-choice-grid setup-choice-grid-two" aria-label="Choose your colour">
+                <button class="setup-choice active" type="button" data-ai-color="white" aria-pressed="true">
+                  <img class="setup-piece-preview" src="white-piece/king.png" alt="">
+                  <span class="setup-choice-mark">Selected</span>
+                  <span class="setup-choice-title">Play as White</span>
+                  <span class="setup-choice-meta">You move first</span>
+                </button>
+                <button class="setup-choice" type="button" data-ai-color="black" aria-pressed="false">
+                  <img class="setup-piece-preview" src="black-piece/king.png" alt="">
+                  <span class="setup-choice-mark">Select</span>
+                  <span class="setup-choice-title">Play as Black</span>
+                  <span class="setup-choice-meta">AI moves first</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="ai-setup-section">
+              <div class="setup-section-header">
+                <h2>Difficulty Level</h2>
+              </div>
+              <div class="setup-choice-grid" aria-label="AI difficulty level">
+                <button class="setup-choice" type="button" data-ai-difficulty="easy" aria-pressed="false">
+                  <span class="setup-choice-mark">Select</span>
+                  <span class="setup-choice-title">Easy</span>
+                  <span class="setup-choice-meta">Relaxed play for beginners.</span>
+                </button>
+                <button class="setup-choice active" type="button" data-ai-difficulty="medium" aria-pressed="true">
+                  <span class="setup-choice-mark">Selected</span>
+                  <span class="setup-choice-title">Medium</span>
+                  <span class="setup-choice-meta">Balanced challenge for regular players.</span>
+                </button>
+                <button class="setup-choice" type="button" data-ai-difficulty="hard" aria-pressed="false">
+                  <span class="setup-choice-mark">Select</span>
+                  <span class="setup-choice-title">Hard</span>
+                  <span class="setup-choice-meta">Strongest challenge from the engine.</span>
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <div class="ai-setup-actions">
+            <button class="btn btn-secondary" type="button" data-route="home">Back</button>
+            <button class="btn btn-primary" type="button" id="btn-ai-start-game">Start Game</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: ACTIVE AI GAME
+           ------------------------------------------------------------------ -->
+      <section id="view-ai-game" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" id="btn-ai-game-back" type="button">Back</button>
+        </div>
+        <div class="game-layout">
+          
+          <!-- Board Column -->
+          <div class="game-board-section">
+            
+            <!-- AI Opponent Strip -->
+            <div class="player-strip" id="ai-strip-opponent">
+              <div class="player-strip-info">
+                <div class="avatar-circle" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">AI</div>
+                <div>
+                  <span class="player-strip-name" id="ai-opponent-name">Tactical Engine v1</span>
+                  <span class="text-muted" style="font-size: 0.8rem;" id="ai-opponent-rating">(1400)</span>
+                </div>
+              </div>
+              <div class="captured-pieces-tray" id="ai-captured-white"></div>
+              <div class="player-strip-clock clock-black">10:00</div>
+            </div>
+
+            <!-- Chessboard -->
+            <div class="chessboard-wrapper">
+              <div id="ai-board"></div>
+            </div>
+
+            <!-- Player Strip -->
+            <div class="player-strip active-turn" id="ai-strip-player">
+              <div class="player-strip-info">
+                <div class="avatar-circle">GA</div>
+                <div>
+                  <span class="player-strip-name">You</span>
+                  <span class="text-muted" style="font-size: 0.8rem;">(1540)</span>
+                </div>
+              </div>
+              <div class="captured-pieces-tray" id="ai-captured-black"></div>
+              <div class="player-strip-clock clock-white">10:00</div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar Column -->
+          <aside class="game-sidebar">
+            <div class="sidebar-header">
+              <span class="sidebar-title">Move History</span>
+              <span class="game-status-badge" id="ai-game-status">Your Turn</span>
+            </div>
+
+            <div class="move-history-container" id="ai-move-history"></div>
+
+            <div class="sidebar-footer">
+              <div class="action-btn-row">
+                <button class="btn btn-secondary btn-sm" id="btn-ai-draw">Offer Draw</button>
+                <button class="btn btn-danger btn-sm" id="btn-ai-resign">Resign</button>
+              </div>
+              <div class="action-btn-row">
+                <button class="btn btn-primary btn-sm" id="btn-ai-new-game">New Game</button>
+                <button class="btn btn-secondary btn-sm" data-route="home">Home</button>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: MATCHMAKING
+           ------------------------------------------------------------------ -->
+      <section id="view-online" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" data-route="home" type="button">Back</button>
+        </div>
+        <div class="matchmaking-container">
+          
+          <div id="matchmaking-searching" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <div class="radar-spinner">
+              <div class="radar-circle"></div>
+              <div class="radar-circle"></div>
+              <div class="radar-circle"></div>
+              <div class="radar-center-icon">CM</div>
+            </div>
+
+            <h2 style="font-size: 1.6rem; margin-bottom: 8px;">Finding Opponent...</h2>
+            <p class="text-secondary" style="margin-bottom: 24px;">10 min blitz - rating range 1540 +/- 100</p>
+            <div class="badge badge-rating" id="matchmaking-timer" style="font-size: 0.95rem; margin-bottom: 32px; padding: 6px 16px;">
+              Searching: 0s
+            </div>
+
+            <button class="btn btn-secondary" id="btn-cancel-matchmaking">Cancel Matchmaking</button>
+          </div>
+
+          <!-- Opponent Found Pop -->
+          <div id="matchmaking-found" class="opponent-found-card" style="display: none;">
+            <span class="badge badge-win">Opponent Found!</span>
+            <div class="avatar-circle" style="width: 64px; height: 64px; font-size: 1.5rem;">OP</div>
+            <h3 id="found-opponent-name" style="font-size: 1.4rem;">ShadowKnight</h3>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span id="found-opponent-flag">Online</span>
+              <span class="text-gold" id="found-opponent-rating">Rating: 1515</span>
+            </div>
+            <div class="text-secondary" id="found-countdown" style="font-weight: 700; font-size: 1.1rem; margin-top: 12px;">
+              Game starting in 3...
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: LIVE ONLINE GAME
+           ------------------------------------------------------------------ -->
+      <section id="view-online-game" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" data-route="home" type="button">Back</button>
+        </div>
+        <div class="game-layout">
+          
+          <div class="game-board-section">
+            <div class="player-strip">
+              <div class="player-strip-info">
+                <div class="avatar-circle" style="background: linear-gradient(135deg, #e11d48, #be123c);">OP</div>
+                <div>
+                  <span class="player-strip-name" id="online-opponent-name">ShadowKnight</span>
+                  <span class="text-muted" style="font-size: 0.8rem;" id="online-opponent-rating">(1515)</span>
+                </div>
+              </div>
+              <div class="captured-pieces-tray" id="online-captured-white"></div>
+              <div class="player-strip-clock clock-black">10:00</div>
+            </div>
+
+            <div class="chessboard-wrapper">
+              <div id="online-board"></div>
+            </div>
+
+            <div class="player-strip active-turn">
+              <div class="player-strip-info">
+                <div class="avatar-circle">GA</div>
+                <div>
+                  <span class="player-strip-name">You</span>
+                  <span class="text-muted" style="font-size: 0.8rem;">(1540)</span>
+                </div>
+              </div>
+              <div class="captured-pieces-tray" id="online-captured-black"></div>
+              <div class="player-strip-clock clock-white">10:00</div>
+            </div>
+          </div>
+
+          <aside class="game-sidebar">
+            <div class="sidebar-header">
+              <span class="sidebar-title">Live Match</span>
+              <span class="game-status-badge" id="online-game-status">Your Turn</span>
+            </div>
+
+            <div class="move-history-container" id="online-move-history"></div>
+
+            <div class="sidebar-footer">
+              <div class="action-btn-row">
+                <button class="btn btn-secondary btn-sm" id="btn-online-draw">Offer Draw</button>
+                <button class="btn btn-danger btn-sm" id="btn-online-resign">Resign</button>
+              </div>
+              <div class="action-btn-row">
+                <button class="btn btn-secondary btn-sm" data-route="home">Home</button>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: MATCH HISTORY
+           ------------------------------------------------------------------ -->
+      <section id="view-history" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" data-route="home" type="button">Back</button>
+        </div>
+        <div class="history-container">
+          
+          <div class="history-header-bar">
+            <div>
+              <h2 style="font-size: 1.6rem;">Match History</h2>
+              <p class="text-secondary" style="font-size: 0.92rem;">Review past games and launch step-by-step move replays.</p>
+            </div>
+
+            <!-- Filter tabs -->
+            <div class="filter-tabs">
+              <button class="filter-tab active" data-filter="all">All</button>
+              <button class="filter-tab" data-filter="win">Won</button>
+              <button class="filter-tab" data-filter="loss">Lost</button>
+              <button class="filter-tab" data-filter="draw">Drawn</button>
+            </div>
+
+            <!-- Search box -->
+            <input type="text" id="history-search-input" class="form-control" placeholder="Search by opponent or ID..." style="max-width: 260px;">
+          </div>
+
+          <div class="history-list" id="history-match-list"></div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: MATCH REPLAY
+           ------------------------------------------------------------------ -->
+      <section id="view-replay" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" data-route="home" type="button">Back</button>
+        </div>
+        <div class="game-layout">
+          
+          <div class="game-board-section">
+            <div class="chessboard-wrapper">
+              <div id="replay-board"></div>
+            </div>
+
+            <!-- Replay Interactive Controls Bar -->
+            <div class="replay-controls-card">
+              <div class="replay-progress-bar" id="replay-progress-bar" title="Click to scrub to move">
+                <div class="replay-progress-fill" id="replay-progress-fill"></div>
+              </div>
+
+              <div class="replay-button-group">
+                <button class="btn btn-icon" id="btn-replay-first" title="First Move (|<)">|&lt;</button>
+                <button class="btn btn-icon" id="btn-replay-prev" title="Previous Move (<)">&lt;</button>
+                <button class="btn btn-secondary btn-sm" id="btn-replay-play" style="min-width: 90px;">Play</button>
+                <button class="btn btn-icon" id="btn-replay-next" title="Next Move (>)">&gt;</button>
+                <button class="btn btn-icon" id="btn-replay-last" title="Last Move (>|)">&gt;|</button>
+                <span class="replay-counter-text" id="replay-move-counter">Move 0 / 0</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="game-sidebar">
+            <div class="sidebar-header">
+              <div>
+                <span class="sidebar-title" id="replay-opponent-name">Opponent</span>
+                <span class="text-muted" style="font-size: 0.8rem;" id="replay-opponent-rating"></span>
+              </div>
+              <span class="badge badge-win" id="replay-result-badge">Victory</span>
+            </div>
+
+            <div style="padding: 8px 16px; font-size: 0.82rem; background: var(--bg-tertiary);" id="replay-match-date">
+              Match Replay
+            </div>
+
+            <div class="move-history-container" id="replay-move-history"></div>
+
+            <div class="sidebar-footer">
+              <button class="btn btn-secondary btn-sm" data-route="history">Back to History</button>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW: PROFILE & SETTINGS
+           ------------------------------------------------------------------ -->
+      <section id="view-profile" class="app-view">
+        <div class="view-topbar">
+          <button class="btn btn-secondary btn-sm btn-home-return" data-route="home" type="button">Back</button>
+        </div>
+        <div class="profile-grid">
+          
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 24px;">
+              <div class="stats-avatar-large" id="profile-avatar-large" style="width: 64px; height: 64px; font-size: 1.6rem;">GA</div>
+              <div>
+                <h2 style="font-size: 1.4rem;">Player Profile</h2>
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                  <span class="badge badge-rating" id="profile-rating-badge">Elo Rating: 1540</span>
+                  <span class="badge badge-win" id="profile-winrate">Win Rate: 58.1%</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="profile-form">
+              <div class="form-group">
+                <label class="form-label" for="profile-input-username">Username</label>
+                <input type="text" id="profile-input-username" class="form-control" value="GrandmasterAlex">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profile-input-email">Email Address</label>
+                <input type="email" id="profile-input-email" class="form-control" value="alex.grandmaster@example.com">
+              </div>
+
+              <button class="btn btn-primary" id="btn-save-profile">Save Changes</button>
+            </form>
+
+            <div class="profile-logout-row">
+              <button class="btn btn-danger" id="btn-logout" type="button">Logout</button>
+            </div>
+          </div>
+
+          <!-- Settings Card -->
+          <div class="settings-card">
+            <h2 style="font-size: 1.4rem; margin-bottom: 20px;">Game Settings</h2>
+
+            <div class="setting-toggle-row">
+              <div>
+                <div style="font-weight: 600;">Sound Effects</div>
+                <div class="text-muted" style="font-size: 0.82rem;">Play audio on moves, captures, checks and victories.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-sound" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-toggle-row">
+              <div>
+                <div style="font-weight: 600;">Board Coordinates</div>
+                <div class="text-muted" style="font-size: 0.82rem;">Display ranks (1-8) and files (a-h) on board squares.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-coords" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-toggle-row">
+              <div>
+                <div style="font-weight: 600;">Light Theme</div>
+                <div class="text-muted" style="font-size: 0.82rem;">Toggle between dark and light application themes.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-theme">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-toggle-row">
+              <div>
+                <div style="font-weight: 600;">Confirm Moves</div>
+                <div class="text-muted" style="font-size: 0.82rem;">Require confirmation before submitting online moves.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-confirm-move">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         3. MODALS & POPUPS
+         ==================================================================== -->
+    <div id="game-result-modal" class="modal-overlay">
+      <div class="modal-box">
+        <div class="modal-icon-badge modal-icon-win">1-0</div>
+        <h2 class="modal-title">YOU WON</h2>
+        <p class="modal-reason">Victory by Checkmate.</p>
+        
+        <div class="modal-stats-list"></div>
+
+        <div class="modal-btn-group">
+          <button class="btn btn-primary" id="btn-modal-new-game">New Game</button>
+          <button class="btn btn-secondary" id="btn-modal-replay">View Game Replay</button>
+          <button class="btn btn-secondary" id="btn-modal-home">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+  </div>
+
+  <!-- Scripts in dependency order -->
+  <script src="js/pieces.js?v=backend-connect-11"></script>
+  <script src="js/mockData.js?v=backend-connect-11"></script>
+  <script src="js/state.js?v=backend-connect-11"></script>
+  <script src="js/api.js?v=online-ws-fix-2"></script>
+  <script src="js/auth.js?v=backend-connect-11"></script>
+  <script src="js/chessboard.js?v=backend-connect-11"></script>
+  <script src="js/game.js?v=backend-connect-11"></script>
+  <script src="js/chessRules.js?v=complete-rules-1"></script>
+  <script src="js/ai.js?v=backend-connect-11"></script>
+  <script src="js/online.js?v=online-close-fix-4"></script>
+  <script src="js/history.js?v=backend-connect-11"></script>
+  <script src="js/replay.js?v=backend-connect-11"></script>
+  <script src="js/profile.js?v=backend-connect-11"></script>
+  <script src="js/router.js?v=online-ws-fix-2"></script>
+  <script src="js/app.js?v=online-ws-fix-2"></script>
+</body>
+</html>
+
+

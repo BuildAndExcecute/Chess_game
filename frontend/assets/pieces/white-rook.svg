@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="body" x1="119" y1="78" x2="388" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#fbfcfc"/>
+      <stop offset="1" stop-color="#d9e2e5"/>
+    </linearGradient>
+    <linearGradient id="side" x1="265" y1="117" x2="407" y2="427" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#c8d2d6" stop-opacity=".78"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#34383a" stroke-width="17" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#body)" d="M145 80h61v43h99V80h62l12 80c7 44-16 81-58 98H191c-42-17-65-54-58-98l12-80Z"/>
+    <path fill="url(#body)" d="M177 258h158l28 154H149l28-154Z"/>
+    <path fill="url(#body)" d="M95 458c0-50 41-74 88-74h146c47 0 88 24 88 74v22H95v-22Z"/>
+    <path fill="none" d="M172 258c51-13 120-13 168 0M153 384c60-10 145-10 206 0"/>
+  </g>
+  <path fill="url(#side)" d="M300 92h49l8 58c6 43-18 76-60 88l25 153c48 4 74 28 74 68h-42c-8-96-20-157-54-367Z"/>
+</svg>
