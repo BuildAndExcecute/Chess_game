@@ -1,0 +1,22 @@
+Zero-Dependency Runtime Proof
+
+Project: zero_dependency_backend
+Runtime: Node.js
+
+Command:
+npm ls --omit=dev
+
+Expected result:
+zero_dependency_backend@1.0.0
+`-- (empty)
+
+Command:
+npm pkg get dependencies
+
+Expected result:
+{}
+
+Runtime third-party dependencies: 0
+
+The application uses Node.js standard-library modules only.
+No third-party runtime packages are required.

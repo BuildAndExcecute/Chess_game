@@ -13,7 +13,7 @@ export async function handleConnection(socket, req) {
     // AUTHENTICATE WEBSOCKET CONNECTION
     // =========================================================
 
-    const authenticated = await requireAuth(req);
+    const authenticated = await requireAuth(req,res);
 
     if (!authenticated) {
         console.log("WebSocket authentication failed");

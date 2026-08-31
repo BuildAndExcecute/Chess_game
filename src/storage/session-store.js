@@ -10,7 +10,7 @@ const SESSIONS_FILE = path.join(
     "../../data/sessions.json"
 );
 
-const SESSION_DURATION = 60*60* 1000; // 1 hour
+const SESSION_DURATION = 24*60*60* 1000; // 1 day
 
 export async function readSessions() {
     try {

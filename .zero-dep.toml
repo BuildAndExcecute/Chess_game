@@ -1,0 +1,2 @@
+track = "Open / Wildcard"
+pitch = "A zero-dependency multiplayer chess backend with custom authentication, WebSockets, matchmaking, and chess logic built entirely with Node.js standard-library APIs."

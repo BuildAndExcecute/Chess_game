@@ -1,16 +1,79 @@
 [
   {
-    "id": "a5b9b272-7499-4505-8a10-1e3fc8ae3ef9",
-    "username": "alice",
-    "email": "alice@gmail.com",
-    "passwordHash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
-    "createdAt": "2026-08-30T15:23:36.820Z"
+    "id": "d256c50c-409b-4d55-93a5-0c810b996947",
+    "username": "another_user",
+    "email": "1788146906197_e558b064@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:28:26.209Z"
   },
   {
-    "id": "50df58f1-7ef8-4c9b-afef-5855af7716e5",
-    "username": "bob",
-    "email": "bob@gmail.com",
-    "passwordHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
-    "createdAt": "2026-08-30T15:38:59.843Z"
+    "id": "33d68b59-8808-4864-b00b-3de9103ec4f6",
+    "username": "login_1788146906211_6dfd9fce",
+    "email": "1788146906211_6dfd9fce@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:28:26.215Z"
+  },
+  {
+    "id": "d1573f6c-24aa-4e11-a4ee-bdea4c1d2ee5",
+    "username": "resign1_1788146906217_c5dc3071",
+    "email": "1788146906217_c5dc3071@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:28:26.220Z"
+  },
+  {
+    "id": "21f39c7a-fa9f-409a-b030-d458b486b70c",
+    "username": "wrong_password_1788146906223_da5abd28",
+    "email": "1788146906223_da5abd28@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:28:26.225Z"
+  },
+  {
+    "id": "b722acd8-22ba-4caa-95aa-7ecd58c22bbb",
+    "username": "resign2_1788146906226_0cdc79fb",
+    "email": "1788146906226_0cdc79fb@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:28:26.229Z"
+  },
+  {
+    "id": "3817e2de-3443-4c23-910e-cfa907766ffa",
+    "username": "game1_1788146906222_1f1ad49d",
+    "email": "1788146906222_1f1ad49d@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:28:26.233Z"
+  },
+  {
+    "id": "c9072d08-46e8-4d8b-a7f5-2deb0cf9b2a8",
+    "username": "resign1_1788147016543_0dbc236e",
+    "email": "1788147016543_0dbc236e@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:30:16.555Z"
+  },
+  {
+    "id": "27b888e6-652e-4f23-8128-551acd627eba",
+    "username": "duplicate_1788147016556_363c9a03",
+    "email": "1788147016556_363c9a03@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:30:16.560Z"
+  },
+  {
+    "id": "9086eaf8-c877-487e-a60d-4e5a1c26cc5d",
+    "username": "resign2_1788147016565_ef912d85",
+    "email": "1788147016565_ef912d85@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:30:16.568Z"
+  },
+  {
+    "id": "5ebb36df-12cb-4739-a056-7b5ecfd735a1",
+    "username": "login_1788147016570_eab1e790",
+    "email": "1788147016570_eab1e790@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:30:16.574Z"
+  },
+  {
+    "id": "de81ae6b-1b7d-44f2-962e-0ff7c7bd9eb4",
+    "username": "game1_1788147016568_a1d00aee",
+    "email": "1788147016568_a1d00aee@example.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "createdAt": "2026-08-31T03:30:16.577Z"
   }
 ]
