@@ -1,0 +1,215 @@
+/* ==========================================================================
+   RESPONSIVE - BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1180px) {
+  .game-layout {
+    --board-size: min(64vh, 58vw, 580px);
+    grid-template-columns: minmax(420px, 1fr) 330px;
+  }
+
+  .game-sidebar {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 980px) {
+  .main-nav {
+    display: none;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .game-layout {
+    --board-size: min(72vh, 88vw, 620px);
+  }
+
+  .game-sidebar {
+    width: min(100%, var(--board-size, 620px));
+    height: 430px;
+    min-height: 430px;
+    max-height: none;
+  }
+
+  .history-header-bar,
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    position: static;
+  }
+
+  .home-hero-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .app-header {
+    height: 56px;
+    padding: 0 var(--space-3);
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .brand-badge,
+  .user-quick-name {
+    display: none;
+  }
+
+  .user-quick-profile {
+    padding: 4px;
+  }
+
+  main.main-viewport {
+    padding: var(--space-3) var(--space-3) var(--space-6);
+  }
+
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-card {
+    min-height: 210px;
+    padding: var(--space-5);
+  }
+
+  .mode-card-meta,
+  .stats-summary-card,
+  .ai-setup-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ai-setup-actions .btn,
+  .setup-choice-grid,
+  .setup-choice-grid-two {
+    width: 100%;
+  }
+
+  .setup-choice-grid,
+  .setup-choice-grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .stat-item {
+    align-items: flex-start;
+  }
+
+  .game-layout {
+    --board-size: min(94vw, calc(100vh - 260px), 430px);
+  }
+
+  .player-strip {
+    grid-template-columns: minmax(120px, 1fr) minmax(64px, 0.8fr) auto;
+    width: var(--board-size, min(94vw, 430px));
+    min-height: 50px;
+    gap: 6px;
+  }
+
+  .captured-pieces-tray {
+    padding: 2px 4px;
+  }
+
+  .player-strip-clock {
+    min-width: 64px;
+    font-size: 0.95rem;
+  }
+
+  .game-sidebar,
+  .replay-controls-card {
+    width: var(--board-size, min(94vw, 430px));
+  }
+
+  .game-sidebar {
+    height: 390px;
+    min-height: 390px;
+  }
+
+  .history-header-bar {
+    align-items: stretch;
+  }
+
+  .filter-tabs {
+    overflow-x: auto;
+  }
+
+  .match-card {
+    grid-template-columns: 1fr;
+  }
+
+  .match-card-main,
+  .match-card-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .match-card-meta {
+    width: 100%;
+  }
+
+  .match-card-meta .btn {
+    width: 100%;
+  }
+
+  .replay-button-group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .setting-toggle-row {
+    align-items: start;
+  }
+
+  #toast-container {
+    right: var(--space-3);
+    bottom: var(--space-3);
+    left: var(--space-3);
+  }
+
+  .toast {
+    max-width: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .game-layout {
+    --board-size: min(94vw, calc(100vh - 248px));
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .player-strip-name {
+    font-size: 0.86rem;
+  }
+
+  .player-strip {
+    grid-template-columns: minmax(104px, 1fr) 58px auto;
+    padding: 6px;
+  }
+
+  .avatar-circle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+}

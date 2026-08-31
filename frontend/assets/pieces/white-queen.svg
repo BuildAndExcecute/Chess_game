@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="body" x1="83" y1="69" x2="403" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#fbfcfc"/>
+      <stop offset="1" stop-color="#d9e2e5"/>
+    </linearGradient>
+    <linearGradient id="side" x1="289" y1="103" x2="424" y2="428" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#c8d2d6" stop-opacity=".75"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#394348" stroke-width="17" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="url(#body)" d="M66 173c0-24 19-43 43-43s43 19 43 43c0 14-7 27-18 35l46 124 44-208c-17-8-29-25-29-45 0-28 22-50 50-50s50 22 50 50c0 19-11 36-27 44l58 209 51-125c-10-8-16-20-16-34 0-24 19-43 43-43s43 19 43 43-19 43-43 43h-5l-69 183H144L78 216c-8-8-12-19-12-43Z"/>
+    <path fill="url(#body)" d="M111 461c3-51 44-77 94-77h102c50 0 91 26 94 77v19H111v-19Z"/>
+    <path fill="none" d="M144 384c64-15 160-15 224 0"/>
+  </g>
+  <path fill="url(#side)" d="M321 339 269 124c16-7 26-24 26-45 0-5-1-10-2-15 31 46 66 131 103 255l6 1-29 79H320c9-20 9-40 1-60Z"/>
+</svg>
